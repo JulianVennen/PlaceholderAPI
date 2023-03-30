@@ -25,6 +25,7 @@ Your expansion is now uploaded and will be reviewed by a moderator.
 If everything is ok will your expansion be approved and will be available on the ecloud for PlaceholderAPI*.
 
 > *You can only download verified Expansions through PlaceholderAPIs command, unless you enable the option `cloud_allow_unverified_expansions` in the config.yml  
+> This option can also be overridden using the environment variable `PAPI_ALLOW_UNVERIFIED_EXPANSIONS`  
 > Unverified expansions can be downloaded manually by going to the site and download it yourself.  
 > You can block specific expansions from being downloaded using the `PAPI_BLOCKED_EXPANSIONS` environment variable.
 > It contains a comma separated list of expansion names, that should be blocked from being downloaded.
