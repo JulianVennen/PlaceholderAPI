@@ -100,7 +100,7 @@ public final class CloudExpansionManager {
 
   public void load() {
     clean();
-    fetch(plugin.getPlaceholderAPIConfig().cloudAllowUnverifiedExpansions());
+    fetch();
   }
 
   public void kill() {
@@ -170,7 +170,25 @@ public final class CloudExpansionManager {
     await.clear();
   }
 
-  public void fetch(final boolean allowUnverified) {
+  private boolean areUnverifiedExpansionsAllowed() {
+    if (System.getenv("PAPI_ALLOW_UNVERIFIED_EXPANSIONS") != null) {
+      switch (System.getenv("PAPI_ALLOW_UNVERIFIED_EXPANSIONS").toLowerCase()) {
+        case "true":
+        case "yes":
+        case "1":
+          return true;
+        case "false":
+        case "no":
+        case "0":
+          return false;
+      }
+    }
+    return plugin.getPlaceholderAPIConfig().cloudAllowUnverifiedExpansions();
+  }
+
+  public void fetch() {
+    final boolean allowUnverified = this.areUnverifiedExpansionsAllowed();
+
     plugin.getLogger().info("Fetching available expansion information...");
 
     ASYNC_EXECUTOR.submit(

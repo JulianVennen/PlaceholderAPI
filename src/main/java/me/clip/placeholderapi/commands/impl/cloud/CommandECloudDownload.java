@@ -104,8 +104,7 @@ public final class CommandECloudDownload extends PlaceholderCommand {
               "&aMake sure to type &f/papi reload &ato enable your new expansion!");
 
           plugin.getCloudExpansionManager().clean();
-          plugin.getCloudExpansionManager()
-              .fetch(plugin.getPlaceholderAPIConfig().cloudAllowUnverifiedExpansions());
+          plugin.getCloudExpansionManager().fetch();
         });
   }
 
